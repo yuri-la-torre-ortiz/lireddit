@@ -2,8 +2,8 @@
     "type": "postgres",
     "host": "localhost",
     "port": 5432,
-    "username": "codedoor",
-    "password": "codedoor",
+    "username": "postgres",
+    "password": "postgres",
     "database": "lireddit",
     "entities": ["dist/entities/*.js"],
     "migrations": ["dist/migrations/*.js"]
