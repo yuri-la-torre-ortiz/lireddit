@@ -2,16 +2,21 @@ import { MikroORM } from '@mikro-orm/core';
 import { __prod__ } from './constants';
 import { Post } from './entities/Post';
 import microConfig from "./mikro-orm.config";
+import express from 'express';
 
 const main = async () => {
     const orm = await MikroORM.init(microConfig);
     await orm.getMigrator().up();
-    // const post = orm.em.create(Post, {title: 'my first post'});
-    // await orm.em.persistAndFlush(post);
 
-    const posts = await orm.em.find(Post, {});
-    console.log(posts);
-};
+    const app = express();
+    app.get('/', (_, res) => {
+        //when ignorning a variable an '_' is standard practice
+        res.send('hello world');
+    })
+    app.listen(4000, () => {
+        console.log('Server started on localhost:4000.')
+    })
+}
 
 main().catch(err => {
     console.error(err);
